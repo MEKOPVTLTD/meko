@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "85332297142",
+    "project_id": "meko-5251d",
+    "storage_bucket": "meko-5251d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85332297142:android:55efd867693fc607b42d17",
+        "android_client_info": {
+          "package_name": "com.meko.meko"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85332297142-e7ckq8kdqht39mjsrbc7e44009m3sk0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSKbwpHXZhEpvc1yIc6EsuyGUdRjtfDBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85332297142-e7ckq8kdqht39mjsrbc7e44009m3sk0h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
