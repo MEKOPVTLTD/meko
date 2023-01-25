@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meko/screens/products.dart';
 import 'package:meko/utils/color_utils.dart';
 
 
@@ -73,15 +74,26 @@ class GridBuilderState extends State<GridBuilder> {
                       const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     )
                 ),
-                child: Container(
-                  decoration: BoxDecoration(color: hexStringToColor("BEE3E6")),
-                  child: Image(
-                      color: Colors.black,
-                      image: AssetImage(catalogServices[index]['asset'])
+                child: InkResponse(
+                  enableFeedback: true,
+                  child: Container(
+                    decoration: BoxDecoration(color: hexStringToColor("BEE3E6")),
+                    child: Image(
+                        color: Colors.black,
+                        image: AssetImage(catalogServices[index]['asset'])
+                    ),
                   ),
+                    onTap: () => _onTileClicked(index)
                 )
             );
           }),
     );
+  }
+
+  void _onTileClicked(int i) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Products(index: i)));
   }
 }
