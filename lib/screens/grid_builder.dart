@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meko/utils/color_utils.dart';
 
 
 class GridBuilder extends StatefulWidget {
@@ -13,70 +14,74 @@ class GridBuilderState extends State<GridBuilder> {
   final List<Map> catalogServices = [
     {
       "id" : 1,
-      "name": "Haircut",
-      "asset": "assets/haircut.png",
+      "name": "Salon/Parlor",
+      "asset": "assets/salon_parlor.png",
       "price": "Rs 100"
     },
     {
       "id" : 2,
-      "name": "Manicure",
-      "asset": "assets/manicure.png",
+      "name": "Bridle & Groom",
+      "asset": "assets/bridle_groom.png",
       "price": "Rs 100"
     },
     {
       "id" : 3,
-      "name": "Home cleaning",
-      "asset": "assets/home_cleaning.png",
+      "name": "Tailor",
+      "asset": "assets/tailor.png",
       "price": "Rs 100"
     },
     {
       "id" : 4,
-      "name": "Bath cleaning",
-      "asset": "assets/bathroom_cleaning.png",
+      "name": "Physiotherapist",
+      "asset": "assets/physio.png",
       "price": "Rs 100"
     },
     {
       "id" : 5,
-      "name": "Mehandi",
-      "asset": "assets/mehandi.png",
-      "price": "Rs 100"
-    },
-    {
-      "id" : 6,
-      "name": "Facial",
-      "asset": "assets/facial.png",
+      "name": "Yoga trainer",
+      "asset": "assets/yoga.png",
       "price": "Rs 100"
     }
   ];
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        padding: const EdgeInsets.all(10),
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            childAspectRatio: 2 / 3,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20),
-        itemCount: catalogServices.length,
-        itemBuilder: (BuildContext ctx, index) {
-          return GridTile(
-            key: ValueKey(index),
-            footer: GridTileBar(
-              backgroundColor: Colors.black54,
-              title: Text(
-                catalogServices[index]['name'],
-                style:
-                const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text(
-                  catalogServices[index]['price']
-              ),
-              trailing: const Icon(Icons.shopping_cart),
-            ),
-            child: Image(
-                image: AssetImage(catalogServices[index]['asset']), fit: BoxFit.cover),
-          );
-        });
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+            hexStringToColor("CB2B93"),
+            hexStringToColor("9546C4"),
+            hexStringToColor("5E61F4")
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+      child: GridView.builder(
+          padding: const EdgeInsets.all(10),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 2 / 3,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20),
+          itemCount: catalogServices.length,
+          itemBuilder: (BuildContext ctx, index) {
+            return GridTile(
+                key: ValueKey(index),
+                footer: GridTileBar(
+
+                    backgroundColor: Colors.black54,
+                    title: Text(
+                      catalogServices[index]['name'],
+                      style:
+                      const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    )
+                ),
+                child: Container(
+                  decoration: BoxDecoration(color: hexStringToColor("BEE3E6")),
+                  child: Image(
+                      color: Colors.black,
+                      image: AssetImage(catalogServices[index]['asset'])
+                  ),
+                )
+            );
+          }),
+    );
   }
 }

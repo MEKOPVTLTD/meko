@@ -73,6 +73,11 @@ flutter:
     - assets/mehandi.png
     - assets/facial.png
     - assets/logo.png
+    - assets/salon_parlor.png
+    - assets/bridle_groom.png
+    - assets/tailor.png
+    - assets/physio.png
+    - assets/yoga.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
