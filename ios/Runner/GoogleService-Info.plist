@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>85332297142-ijb4v22ua4qd50l0p9ultjgr65fvggus.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.85332297142-ijb4v22ua4qd50l0p9ultjgr65fvggus</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCSQ9j_2GzJxHlzlhEt8F19MDGEVU4F_m0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>85332297142</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.meko.meko</string>
+	<key>PROJECT_ID</key>
+	<string>meko-5251d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>meko-5251d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:85332297142:ios:0d94810ec2260314b42d17</string>
+</dict>
+</plist>
