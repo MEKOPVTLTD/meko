@@ -3,20 +3,20 @@ import 'package:geolocator/geolocator.dart';
 import 'package:meko/screens/location_denied.dart';
 import 'package:meko/services/geolocator_widget.dart';
 
-import 'grid_builder.dart';
+import 'home.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+class AddressWidget extends StatefulWidget {
+  const AddressWidget({super.key, required this.title});
 
   final String title;
 
   @override
   State<StatefulWidget> createState() {
-    return HomePageState();
+    return AddressWidgetState();
   }
 }
 
-class HomePageState extends State<HomePage> {
+class AddressWidgetState extends State<AddressWidget> {
 
   late Future<Position> futurePositions;
 
@@ -39,7 +39,7 @@ class HomePageState extends State<HomePage> {
             print(d);
             print("******************");
 
-            return GridBuilder();
+            return HomeWidget();
           } else if (snapshot.hasError) {
             return LocationDenied(error: snapshot.error.toString());
           }

@@ -3,7 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:meko/services/geolocator_widget.dart';
 import 'package:meko/utils/color_utils.dart';
 
-import 'grid_builder.dart';
+import 'home.dart';
 
 class LocationDenied extends StatefulWidget {
   const LocationDenied({super.key, required this.error});

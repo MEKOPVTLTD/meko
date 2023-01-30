@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:meko/reusable_widgets/reusable_widget.dart';
 import 'package:meko/reusable_widgets/toast_message.dart';
-import 'package:meko/screens/home_page.dart';
+import 'package:meko/screens/address.dart';
 import 'package:meko/screens/reset_password.dart';
 import 'package:meko/screens/signup.dart';
 import 'package:meko/utils/color_utils.dart';
@@ -58,7 +58,7 @@ class _SignInState extends State<SignIn> {
                       password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage(title: "Meko")));
+                        MaterialPageRoute(builder: (context) => AddressWidget(title: "Meko")));
                   }).onError((error, stackTrace) {
                     ToastMessage.showMessage("Login failed");
                     print("Error ${error.toString()}");
