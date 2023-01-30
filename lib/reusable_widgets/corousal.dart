@@ -1,6 +1,7 @@
 import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:meko/reusable_widgets/reusable_widget.dart';
 
 class CorousalWidget extends StatefulWidget {
   @override
@@ -71,11 +72,8 @@ class _CorousalWidgetState extends State<CorousalWidget> {
   Widget buildImage(String img, int index) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10),
-      color: Colors.grey,
-      child: Image.network(
-        img,
-        fit: BoxFit.cover,
-      ),
+      color: Colors.white,
+      child: loadImageFromNetwork(img),
     );
   }
 }
