@@ -31,6 +31,14 @@ class HomePageState extends State<HomePage> {
         future: futurePositions,
         builder: (context, snapshot) {
           if(snapshot.hasData) {
+            print("******************");
+            print(snapshot.data?.latitude);
+            print(snapshot.data?.longitude);
+            var d = Geolocator.distanceBetween(24.46768905241226, 85.59336475380167,
+                22.75818784537122, 86.20441376912656)/1000;
+            print(d);
+            print("******************");
+
             return GridBuilder();
           } else if (snapshot.hasError) {
             return LocationDenied(error: snapshot.error.toString());
@@ -46,6 +54,13 @@ class HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     futurePositions = determinePosition();
+  }
+
+  void showMessage(String message) {
+    var snackBar = SnackBar(
+      content: Text(message),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
 }
