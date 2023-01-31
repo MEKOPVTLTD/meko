@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:meko/controller/category_controller.dart';
 import 'package:meko/controller/image_controller.dart';
 import 'package:meko/modal/category_model.dart';
+import 'package:meko/modal/product_model.dart';
 import 'package:meko/screens/products.dart';
 
 class GridWidget extends StatefulWidget {
@@ -56,7 +57,7 @@ class _GridWidgetState extends State<GridWidget> {
                                     ),
                                 child: loadImage(categoryModel, index),
                               ),
-                              onTap: () => _onTileClicked(index)));
+                              onTap: () => _onTileClicked(categoryModel[index].products)));
                     },
                     childCount: categoryModel.length,
                   ));
@@ -91,13 +92,16 @@ class _GridWidgetState extends State<GridWidget> {
                 color: Colors.black, snapshot.data!.toString());
           }
           return Container(
-            color: Colors.black12,
+            color: Colors.white,
+            child: const Center(
+              child: CircularProgressIndicator(),
+            ),
           );
         });
   }
 
-  void _onTileClicked(int i) {
+  void _onTileClicked(List<ProductModel>? products) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Products(index: i)));
+        context, MaterialPageRoute(builder: (context) => Products(products: products)));
   }
 }

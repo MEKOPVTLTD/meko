@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:meko/modal/product_model.dart';
 import 'package:meko/utils/color_utils.dart';
-
 
 class Products extends StatefulWidget {
 
-  final int index;
+  final List<ProductModel>? products;
 
-  const Products({super.key, required this.index});
+  const Products({super.key, required this.products});
 
   @override
   ProductsState createState() => ProductsState();
 }
 
-class ProductsState extends State<Products> {
-  void _toggle(int index) {}
+class ProductsState extends State<Products> with
+    TickerProviderStateMixin{
+  late TabController _tabController;
 
-  final List<Map> catalogServices = [
-    {
-      "id" : 1,
-      "name": "Hair",
-      "asset": "assets/hair.png",
-      "price": "Rs 100"
-    }
-  ];
+
+  @override
+  void initState() {
+    _tabController = TabController(vsync: this,length: 2);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,45 +36,28 @@ class ProductsState extends State<Products> {
         title: Text("Meko"),
       ),
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              hexStringToColor("CB2B93"),
-              hexStringToColor("9546C4"),
-              hexStringToColor("5E61F4")
-            ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-        child: GridView.builder(
-            padding: const EdgeInsets.all(10),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                childAspectRatio: 2 / 3,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20),
-            itemCount: catalogServices.length,
-            itemBuilder: (BuildContext ctx, index) {
-              return GridTile(
-                  key: ValueKey(index),
-                  footer: GridTileBar(
+        child: Container(
+          color: Colors.black12,
+          child: TabBar(
 
-                      backgroundColor: Colors.black54,
-                      title: Text(
-                        catalogServices[index]['name'],
-                        style:
-                        const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      )
-                  ),
-                  child: InkResponse(
-                      enableFeedback: true,
-                      child: Container(
-                        decoration: BoxDecoration(color: hexStringToColor("BEE3E6")),
-                        child: Image(
-                            color: Colors.black,
-                            image: AssetImage(catalogServices[index]['asset'])
-                        ),
-                      ),
-                      onTap: () => _onTileClicked(index)
-                  )
-              );
-            }),
+            unselectedLabelColor: Colors.black,
+            labelColor: Colors.white,
+
+            indicator:  const BoxDecoration(
+                color: Colors.black
+            ),
+
+            controller: _tabController,
+            tabs: const <Widget>[
+              Tab(
+                icon: Icon(Icons.man_outlined),
+              ),
+              Tab(
+                icon: Icon(Icons.woman_outlined),
+              )
+            ],
+          ),
+        )
       ),
     );
   }

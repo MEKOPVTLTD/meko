@@ -19,4 +19,7 @@ TODO For ios
 1) setup firebase
 2) setup geolocator
 
+To generate model
+    - flutter pub run build_runner build
+
 
