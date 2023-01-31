@@ -23,7 +23,7 @@ class _GridWidgetState extends State<GridWidget> {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
               List<CategoryModel> categoryModel =
-                  snapshot.data as List<CategoryModel>;
+              snapshot.data as List<CategoryModel>;
               return SliverGrid(
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: 150,
@@ -31,7 +31,7 @@ class _GridWidgetState extends State<GridWidget> {
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10),
                   delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
+                        (BuildContext context, int index) {
                       return GridTile(
                           key: ValueKey(index),
                           footer: GridTileBar(
@@ -53,11 +53,13 @@ class _GridWidgetState extends State<GridWidget> {
                                           color: Colors.black54,
                                           spreadRadius: 2),
                                     ]
-                                    // color: hexStringToColor("EEEEEE")
-                                    ),
+                                  // color: hexStringToColor("EEEEEE")
+                                ),
                                 child: loadImage(categoryModel, index),
                               ),
-                              onTap: () => _onTileClicked(categoryModel[index].products)));
+                              onTap: () =>
+                                  _onTileClicked(
+                                      categoryModel[index].products)));
                     },
                     childCount: categoryModel.length,
                   ));
@@ -101,7 +103,14 @@ class _GridWidgetState extends State<GridWidget> {
   }
 
   void _onTileClicked(List<ProductModel>? products) {
+    List<ProductModel> formattedProducts;
+    if (products == null) {
+      formattedProducts = [];
+    } else {
+      formattedProducts = products;
+    }
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Products(products: products)));
+        context, MaterialPageRoute(
+        builder: (context) => Products(products: formattedProducts)));
   }
 }

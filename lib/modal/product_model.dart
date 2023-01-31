@@ -5,11 +5,11 @@ part 'product_model.g.dart';
 @JsonSerializable()
 class ProductModel {
   final String name;
-  // final String imageName;
-  // final Gender serviceFor;
-  // final int index;
+  final String imageName;
+  final Gender serviceFor;
+  final int index;
 
-  ProductModel(this.name);
+  ProductModel(this.name, this.imageName, this.serviceFor, this.index);
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);
 
