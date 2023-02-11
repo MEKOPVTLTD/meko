@@ -5,7 +5,7 @@ import 'package:meko/modal/gender.dart';
 import 'package:meko/reusable_widgets/gender_widget.dart';
 import 'package:meko/reusable_widgets/reusable_widget.dart';
 import 'package:meko/reusable_widgets/toast_message.dart';
-import 'package:meko/screens/address.dart';
+import 'package:meko/screens/address_book.dart';
 import 'package:meko/utils/color_utils.dart';
 import 'package:meko/utils/constants.dart';
 
@@ -166,7 +166,7 @@ class _SignUpState extends State<SignUp> {
             .then((value) => Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => AddressWidget(title: "Meko"))))
+                    builder: (context) => const AddressBookWidget())))
             .onError((error, stackTrace) =>
                 ToastMessage.showMessage("Signup failed"));
       }).onError((error, stackTrace) {

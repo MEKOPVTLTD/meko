@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:meko/utils/constants.dart';
 
 
 
@@ -14,7 +15,7 @@ Future<Position> determinePosition() async {
     // Location services are not enabled don't continue
     // accessing the position and request users of the
     // App to enable the location services.
-    return Future.error('Location services are disabled.');
+    return Future.error(LOCATION_SERVICE_DISABLED);
   }
 
   permission = await Geolocator.checkPermission();
@@ -26,14 +27,13 @@ Future<Position> determinePosition() async {
       // Android's shouldShowRequestPermissionRationale
       // returned true. According to Android guidelines
       // your App should show an explanatory UI now.
-      return Future.error('Location permissions are denied');
+      return Future.error(LOCATION_PERMISSION_DENIED);
     }
   }
 
   if (permission == LocationPermission.deniedForever) {
     // Permissions are denied forever, handle appropriately.
-    return Future.error(
-        'Location permissions are permanently denied, we cannot request permissions.');
+    return Future.error(LOCATION_PERMISSION_PERMANENT_DENIED);
   }
 
   // When we reach here, permissions are granted and we can
