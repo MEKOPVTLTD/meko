@@ -18,7 +18,7 @@ class GenderWidget extends StatelessWidget {
       onTap: onclick,
       child: Container(
           decoration: BoxDecoration(
-              color: isSelected == true? Colors.white.withOpacity(0.3): Colors.white.withOpacity(0.0),//change color based on your need,
+              color: isSelected == true? Colors.white.withOpacity(0.2): Colors.white.withOpacity(0.0),//change color based on your need,
               border: Border.all(
                 color: isSelected == true? Colors.white.withOpacity(0.3): Colors.white.withOpacity(0.0),//change color based on your need,
               ),
@@ -31,6 +31,7 @@ class GenderWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Icon(
+                  color: Colors.white,
                   icon,
                   size: 50,
                 )

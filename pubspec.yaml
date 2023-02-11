@@ -73,19 +73,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/haircut.png
-    - assets/manicure.png
-    - assets/home_cleaning.png
-    - assets/bathroom_cleaning.png
-    - assets/mehandi.png
-    - assets/facial.png
     - assets/logo.png
-    - assets/salon_parlor.png
-    - assets/bridle_groom.png
-    - assets/tailor.png
-    - assets/physio.png
-    - assets/yoga.png
-    - assets/hair.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

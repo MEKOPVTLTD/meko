@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meko/reusable_widgets/corousal.dart';
+import 'package:meko/reusable_widgets/carausel.dart';
 import 'package:meko/screens/grid.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -33,7 +33,7 @@ class HomeWidgetState extends State<HomeWidget> {
     final lists = SliverList(
       delegate: SliverChildListDelegate(
         [
-          CorousalWidget(),
+          CarauselWidget(),
         ],
       ),
     );

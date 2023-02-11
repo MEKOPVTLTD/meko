@@ -5,7 +5,6 @@ import 'package:meko/reusable_widgets/toast_message.dart';
 import 'package:meko/screens/address.dart';
 import 'package:meko/screens/reset_password.dart';
 import 'package:meko/screens/signup.dart';
-import 'package:meko/utils/color_utils.dart';
 
 
 class SignIn extends StatefulWidget {
@@ -24,12 +23,7 @@ class _SignInState extends State<SignIn> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              hexStringToColor("CB2B93"),
-              hexStringToColor("9546C4"),
-              hexStringToColor("5E61F4")
-            ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+        color: Colors.black,
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.fromLTRB(

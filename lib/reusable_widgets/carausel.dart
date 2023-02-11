@@ -1,15 +1,18 @@
 import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:meko/controller/image_controller.dart';
 import 'package:meko/reusable_widgets/reusable_widget.dart';
 
-class CorousalWidget extends StatefulWidget {
+class CarauselWidget extends StatefulWidget {
   @override
-  _CorousalWidgetState createState() => _CorousalWidgetState();
+  _CarauselWidgetState createState() => _CarauselWidgetState();
 }
 
-class _CorousalWidgetState extends State<CorousalWidget> {
+class _CarauselWidgetState extends State<CarauselWidget> {
   int activeIndex = 0;
+  ImageController imageController = Get.put(ImageController());
 
   var arrayColours = [
     Colors.red,
@@ -22,12 +25,9 @@ class _CorousalWidgetState extends State<CorousalWidget> {
 
 
   final imgList = [
-    'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-    'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-    'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
+    'https://firebasestorage.googleapis.com/v0/b/meko-5251d.appspot.com/o/carousel1.png?alt=media&token=472f5ff3-188b-48f2-bdc9-579299e96a17',
+    'https://firebasestorage.googleapis.com/v0/b/meko-5251d.appspot.com/o/carausel2.png?alt=media&token=135d69c3-71ae-4473-a6ea-d92d2aab84a0',
+    'https://firebasestorage.googleapis.com/v0/b/meko-5251d.appspot.com/o/carausel3.png?alt=media&token=207822f0-f476-427f-983e-c3cd98a58868',
   ];
 
   @override

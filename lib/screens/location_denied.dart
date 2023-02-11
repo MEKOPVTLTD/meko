@@ -22,12 +22,7 @@ class LocationDeniedState extends State<LocationDenied> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              hexStringToColor("CB2B93"),
-              hexStringToColor("9546C4"),
-              hexStringToColor("5E61F4")
-            ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+        color: Colors.black,
         child: Center(
             child: ListView(
                 shrinkWrap: true,
@@ -35,7 +30,7 @@ class LocationDeniedState extends State<LocationDenied> {
                 children: [
                   Center(child: Text(
                     widget.error,
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   ),
                   Center( child: TextButton(
