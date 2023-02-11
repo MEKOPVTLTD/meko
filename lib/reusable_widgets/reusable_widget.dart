@@ -28,9 +28,10 @@ Image loadImageFromNetwork(String imageUrl) {
   );
 }
 
-TextField reusableTextField(String text, IconData icon, bool isPasswordType,
+TextFormField reusableTextField(String text, IconData icon, bool isPasswordType,
+    RegExp validateRegex,String errorMessage,
     TextEditingController controller) {
-  return TextField(
+  return TextFormField(
     controller: controller,
     obscureText: isPasswordType,
     enableSuggestions: !isPasswordType,
@@ -51,6 +52,11 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType,
           borderRadius: BorderRadius.circular(30.0),
           borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
     ),
+    validator: (value) {
+      if(value!.isEmpty || !validateRegex.hasMatch(value)) {
+        return errorMessage;
+      }
+    },
     keyboardType: isPasswordType
         ? TextInputType.visiblePassword
         : TextInputType.emailAddress,
