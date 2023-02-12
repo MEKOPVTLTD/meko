@@ -4,9 +4,8 @@ import 'package:get/get.dart';
 Reference get firebaseStorage => FirebaseStorage.instance.ref();
 
 class ImageRepository extends GetxService {
-
-  Future<String?> getImage(String? imageName) async{
-    if( imageName == null) {
+  Future<String?> getImage(String? imageName) async {
+    if (imageName == null) {
       return null;
     }
     try {
@@ -16,6 +15,5 @@ class ImageRepository extends GetxService {
     } catch (e) {
       return null;
     }
-
   }
 }

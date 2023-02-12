@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:meko/controller/address_controller.dart';
+import 'package:meko/controller/user_controller.dart';
 import 'package:meko/modal/address_model.dart';
 import 'package:meko/reusable_widgets/custom_alert.dart';
 import 'package:meko/screens/address_header.dart';
@@ -24,7 +24,7 @@ class AddressBookWidget extends StatefulWidget {
 class AddressBookWidgetState extends State<AddressBookWidget> {
   bool isLoadingAddress = false;
   bool isSavingAddress = false;
-  final addressController = Get.put(AddressController());
+  final addressController = Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {

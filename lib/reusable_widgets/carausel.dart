@@ -22,8 +22,6 @@ class _CarauselWidgetState extends State<CarauselWidget> {
     Colors.amber,
   ];
 
-
-
   final imgList = [
     'https://firebasestorage.googleapis.com/v0/b/meko-5251d.appspot.com/o/carousel1.png?alt=media&token=472f5ff3-188b-48f2-bdc9-579299e96a17',
     'https://firebasestorage.googleapis.com/v0/b/meko-5251d.appspot.com/o/carausel2.png?alt=media&token=135d69c3-71ae-4473-a6ea-d92d2aab84a0',
@@ -32,10 +30,11 @@ class _CarauselWidgetState extends State<CarauselWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
-        SizedBox(height: 15,),
+        SizedBox(
+          height: 15,
+        ),
         CarouselSlider.builder(
           options: CarouselOptions(
               height: 300,
@@ -49,22 +48,25 @@ class _CarauselWidgetState extends State<CarauselWidget> {
                 setState(() {
                   activeIndex = index;
                 });
-              }
-          ),
+              }),
           itemCount: imgList.length,
           itemBuilder: (context, index, realIndex) {
             final img = imgList[index];
             return buildImage(img, index);
           },
         ),
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         CarouselIndicator(
           count: imgList.length,
           index: activeIndex,
           color: Colors.black12,
           activeColor: Colors.black,
         ),
-        SizedBox(height: 20,),
+        SizedBox(
+          height: 20,
+        ),
       ],
     );
   }

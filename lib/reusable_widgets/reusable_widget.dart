@@ -13,14 +13,14 @@ Image loadImageFromNetwork(String imageUrl) {
   return Image.network(
     imageUrl,
     fit: BoxFit.cover,
-    loadingBuilder: (BuildContext context, Widget child,
-        ImageChunkEvent? loadingProgress) {
+    loadingBuilder:
+        (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
       if (loadingProgress == null) return child;
       return Center(
         child: CircularProgressIndicator(
           value: loadingProgress.expectedTotalBytes != null
               ? loadingProgress.cumulativeBytesLoaded /
-              loadingProgress.expectedTotalBytes!
+                  loadingProgress.expectedTotalBytes!
               : null,
         ),
       );
@@ -28,8 +28,12 @@ Image loadImageFromNetwork(String imageUrl) {
   );
 }
 
-TextFormField reusableTextField(String text, IconData icon, bool isPasswordType,
-    RegExp validateRegex,String errorMessage,
+TextFormField reusableTextField(
+    String text,
+    IconData icon,
+    bool isPasswordType,
+    RegExp validateRegex,
+    String errorMessage,
     TextEditingController controller) {
   return TextFormField(
     controller: controller,
@@ -53,7 +57,7 @@ TextFormField reusableTextField(String text, IconData icon, bool isPasswordType,
           borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
     ),
     validator: (value) {
-      if(value!.isEmpty || !validateRegex.hasMatch(value)) {
+      if (value!.isEmpty || !validateRegex.hasMatch(value)) {
         return errorMessage;
       }
     },

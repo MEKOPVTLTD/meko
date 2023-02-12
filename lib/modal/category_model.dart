@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meko/modal/product_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -11,10 +10,8 @@ class CategoryModel {
   final List<ProductModel>? products;
   final int index;
 
-  CategoryModel(this.name, this.imageName,
-      this.products,
-      this.index);
+  CategoryModel(this.name, this.imageName, this.products, this.index);
 
-  factory CategoryModel.fromJson(Map<String, dynamic> json) => _$CategoryModelFromJson(json);
-
+  factory CategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryModelFromJson(json);
 }

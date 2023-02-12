@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:meko/utils/constants.dart';
-
-
-
 
 Future<Position> determinePosition() async {
   bool serviceEnabled;

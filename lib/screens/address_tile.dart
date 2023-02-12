@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:meko/controller/address_controller.dart';
+import 'package:meko/controller/user_controller.dart';
 import 'package:meko/modal/address_model.dart';
 import 'package:meko/modal/user_model.dart';
 import 'package:meko/reusable_widgets/custom_alert.dart';
@@ -24,7 +24,7 @@ class AddressTile extends StatefulWidget {
 }
 
 class _AddressTileState extends State<AddressTile> {
-  final addressController = Get.put(AddressController());
+  final addressController = Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {

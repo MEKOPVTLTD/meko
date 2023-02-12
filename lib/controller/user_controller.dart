@@ -1,14 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:meko/modal/address_model.dart';
 import 'package:meko/modal/user_model.dart';
-import 'package:meko/repository/address_repository.dart';
+import 'package:meko/repository/user_repository.dart';
 
-class AddressController extends GetxController {
-  static AddressController get instance => Get.find();
-  // final usersCollection = FirebaseFirestore.instance.collection('User');
+class UserController extends GetxController {
+  static UserController get instance => Get.find();
 
-  final _addressRepo = Get.put(AddressRepository());
+  final _addressRepo = Get.put(UserRepository());
 
   Future<void> updateAddress(String uuid, AddressModel addressModel) async {
     return await _addressRepo.addAddress(uuid, addressModel);

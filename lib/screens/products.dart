@@ -4,7 +4,6 @@ import 'package:meko/controller/image_controller.dart';
 import 'package:meko/modal/product_model.dart';
 
 class Products extends StatefulWidget {
-
   final List<ProductModel> products;
 
   const Products({super.key, required this.products});
@@ -13,14 +12,12 @@ class Products extends StatefulWidget {
   ProductsState createState() => ProductsState();
 }
 
-class ProductsState extends State<Products> with
-    TickerProviderStateMixin{
+class ProductsState extends State<Products> with TickerProviderStateMixin {
   late TabController _tabController;
-
 
   @override
   void initState() {
-    _tabController = TabController(vsync: this,length: 2);
+    _tabController = TabController(vsync: this, length: 2);
     super.initState();
   }
 
@@ -33,21 +30,19 @@ class ProductsState extends State<Products> with
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Meko"),
-      ),
-      body: Container(
-          child: CustomScrollView(
-            slivers: render(context),
-          )
-      )
-    );
+        appBar: AppBar(
+          title: Text("Meko"),
+        ),
+        body: Container(
+            child: CustomScrollView(
+          slivers: render(context),
+        )));
   }
 
   List<Widget> render(BuildContext context) {
     List<Widget> items = [];
     items.add(renderTab(context));
-    if(widget.products.isEmpty) {
+    if (widget.products.isEmpty) {
       items.add(renderNoContentMessage(context));
     } else {
       items.add(renderTabView(context));
@@ -63,14 +58,9 @@ class ProductsState extends State<Products> with
           Container(
             color: Colors.black12,
             child: TabBar(
-
               unselectedLabelColor: Colors.black,
               labelColor: Colors.white,
-
-              indicator:  const BoxDecoration(
-                  color: Colors.black
-              ),
-
+              indicator: const BoxDecoration(color: Colors.black),
               controller: _tabController,
               tabs: const <Widget>[
                 Tab(
@@ -96,7 +86,7 @@ class ProductsState extends State<Products> with
             mainAxisSpacing: 10,
             crossAxisSpacing: 10),
         delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
+          (BuildContext context, int index) {
             return GridTile(
                 key: ValueKey(index),
                 footer: GridTileBar(
@@ -114,12 +104,10 @@ class ProductsState extends State<Products> with
                           border: Border.all(color: Colors.black54),
                           color: Colors.white,
                           boxShadow: const [
-                            BoxShadow(
-                                color: Colors.black54,
-                                spreadRadius: 2),
+                            BoxShadow(color: Colors.black54, spreadRadius: 2),
                           ]
-                        // color: hexStringToColor("EEEEEE")
-                      ),
+                          // color: hexStringToColor("EEEEEE")
+                          ),
                       child: loadImage(widget.products, index),
                     ),
                     onTap: () => _onTileClicked(index)));

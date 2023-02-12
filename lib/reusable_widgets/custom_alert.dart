@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 
 void customAlertMessage(BuildContext context, String title, String message,
         List<Widget> actions) =>

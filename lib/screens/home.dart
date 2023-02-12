@@ -8,18 +8,15 @@ class HomeWidget extends StatefulWidget {
 }
 
 class HomeWidgetState extends State<HomeWidget> {
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-        child: CustomScrollView(
-          slivers: render(context),
-        ),
-      )
-    );
+        child: Padding(
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      child: CustomScrollView(
+        slivers: render(context),
+      ),
+    ));
   }
 
   List<Widget> render(BuildContext context) {
@@ -44,8 +41,6 @@ class HomeWidgetState extends State<HomeWidget> {
     final grids = GridWidget();
     return grids;
   }
-
-
 
   Widget buildImage(String img, int index) {
     return Container(

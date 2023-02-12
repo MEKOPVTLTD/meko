@@ -6,10 +6,10 @@ class CategoryRepository extends GetxService {
   static CategoryRepository get instance => Get.find();
   final _db = FirebaseFirestore.instance;
 
-  Future<List<CategoryModel>> allCategory() async{
+  Future<List<CategoryModel>> allCategory() async {
     final snapshot = await _db.collection("Category").get();
-    final categories = snapshot.docs.map((e) => CategoryModel.fromJson(e.data())).toList();
+    final categories =
+        snapshot.docs.map((e) => CategoryModel.fromJson(e.data())).toList();
     return categories;
-
   }
 }
