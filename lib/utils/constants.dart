@@ -12,5 +12,6 @@ const String ENABLE_APP_LOCATION_MSG= "Enable App Location";
 const String ENABLE_LOCATION_MSG= "Enable Location";
 const String OK= "OK";
 const String LOADING_ADDRESS= "Loading Address...";
+const String SAVING_ADDRESS= "Saving Address...";
 const String SAVE= "Save";
 const String YOUR_ADDRESS= "Your Address";

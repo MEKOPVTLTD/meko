@@ -82,13 +82,22 @@ class _SignInState extends State<SignIn> {
               email: _emailTextController.text,
               password: _passwordTextController.text)
           .then((value) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => AddressBookWidget()));
+        var userId = value.user?.uid;
+        if (userId != null) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddressBookWidget(userId: userId)));
+        }
       }).onError((error, stackTrace) {
-        ToastMessage.showMessage("Login failed");
-        print("Error ${error.toString()}");
+        switch (error.toString()) {
+          case "[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.":
+            ToastMessage.showSnackMessage(
+                context, "User not found. Please signup");
+            break;
+          default:
+            ToastMessage.showSnackMessage(context, "Login Failed");
+        }
       });
     }
   }

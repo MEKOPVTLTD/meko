@@ -6,7 +6,6 @@ import 'package:meko/reusable_widgets/gender_widget.dart';
 import 'package:meko/reusable_widgets/reusable_widget.dart';
 import 'package:meko/reusable_widgets/toast_message.dart';
 import 'package:meko/screens/address_book.dart';
-import 'package:meko/utils/color_utils.dart';
 import 'package:meko/utils/constants.dart';
 
 class SignUp extends StatefulWidget {
@@ -17,13 +16,13 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  TextEditingController _passwordTextController = TextEditingController();
-  TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _phoneTextController = TextEditingController();
-  TextEditingController _addressTextController = TextEditingController();
-  TextEditingController _nameTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _phoneTextController = TextEditingController();
+  final TextEditingController _nameTextController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   Gender selected = Gender.MALE;
+  User? user;
 
   final usersCollection = FirebaseFirestore.instance.collection('Users');
 
@@ -88,13 +87,6 @@ class _SignUpState extends State<SignUp> {
                           const SizedBox(
                             height: 20,
                           ),
-                          reusableTextField(
-                              "Address",
-                              Icons.home_outlined,
-                              false,
-                              ADDRESS_REGEX,
-                              "Enter valid address",
-                              _addressTextController),
                           const SizedBox(
                             height: 20,
                           ),
@@ -154,21 +146,32 @@ class _SignUpState extends State<SignUp> {
               email: _emailTextController.text,
               password: _passwordTextController.text)
           .then((value) {
-        usersCollection
-            .doc(value.user?.uid)
-            .set({
-              "name": _nameTextController.text,
-              "email": _emailTextController.text,
-              "phone": _phoneTextController.text,
-              "address": _addressTextController.text,
-              "gender": selected.name
-            })
-            .then((value) => Navigator.push(
+        user = value.user;
+        return usersCollection.doc(value.user?.uid).set({
+          "name": _nameTextController.text,
+          "email": _emailTextController.text,
+          "phone": _phoneTextController.text,
+          "gender": selected.name,
+          "type": "consumer"
+        }).then((value) {
+          var uid = user?.uid;
+          if (uid != null) {
+            Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const AddressBookWidget())))
-            .onError((error, stackTrace) =>
-                ToastMessage.showMessage("Signup failed"));
+                    builder: (context) => AddressBookWidget(
+                          userId: uid,
+                        )));
+          }
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const AddressBookWidget(
+                        userId: "fvfkn",
+                      )));
+        }).onError((error, stackTrace) {
+          ToastMessage.showMessage("Signup failed");
+        });
       }).onError((error, stackTrace) {
         ToastMessage.showMessage("Signup failed");
       });

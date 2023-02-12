@@ -10,7 +10,15 @@ class ToastMessage {
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.red,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
+  }
+
+  static void showSnackMessage(BuildContext context, String message) {
+    if (message != null) {
+      var snackBar = SnackBar(
+        content: Text(message),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 }
