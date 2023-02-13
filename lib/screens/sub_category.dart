@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meko/controller/image_controller.dart';
 import 'package:meko/modal/sub_category_model.dart';
+import 'package:meko/screens/grid.dart';
 
 class SubCategory extends StatefulWidget {
   final List<SubCategoryModel> products;
@@ -12,7 +13,8 @@ class SubCategory extends StatefulWidget {
   SubCategoryState createState() => SubCategoryState();
 }
 
-class SubCategoryState extends State<SubCategory> with TickerProviderStateMixin {
+class SubCategoryState extends State<SubCategory>
+    with TickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -79,41 +81,14 @@ class SubCategoryState extends State<SubCategory> with TickerProviderStateMixin 
   }
 
   Widget renderTabView(BuildContext context) {
-    return SliverGrid(
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 150,
-            childAspectRatio: 3 / 4,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10),
-        delegate: SliverChildBuilderDelegate(
-          (BuildContext context, int index) {
-            return GridTile(
-                key: ValueKey(index),
-                footer: GridTileBar(
-                    backgroundColor: Colors.black54,
-                    title: Text(
-                      widget.products[index].name,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
-                    )),
-                child: InkResponse(
-                    enableFeedback: true,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.black54),
-                          color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(color: Colors.black54, spreadRadius: 2),
-                          ]
-                          // color: hexStringToColor("EEEEEE")
-                          ),
-                      child: loadImage(widget.products, index),
-                    ),
-                    onTap: () => _onTileClicked(index)));
-          },
-          childCount: widget.products.length,
-        ));
+    return GridWidget<SubCategoryModel>(
+      items: widget.products,
+      getName: (SubCategoryModel value) => value.name,
+      getImageName: (SubCategoryModel value) => value.imageName,
+      onSelect: (SubCategoryModel value) {
+        _onTileClicked(context, value);
+      },
+    );
   }
 
   Widget renderNoContentMessage(BuildContext context) {
@@ -146,7 +121,7 @@ class SubCategoryState extends State<SubCategory> with TickerProviderStateMixin 
         });
   }
 
-  void _onTileClicked(int i) {
-    print(i);
+  void _onTileClicked(BuildContext context, SubCategoryModel i) {
+    // print(i);
   }
 }
