@@ -1,5 +1,7 @@
+import 'package:easy_search_bar/easy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:meko/reusable_widgets/carausel.dart';
+import 'package:meko/screens/consumer/consumer_drawer.dart';
 import 'package:meko/screens/grid.dart';
 
 class ConsumerHomeWidget extends StatefulWidget {
@@ -10,13 +12,33 @@ class ConsumerHomeWidget extends StatefulWidget {
 class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
   @override
   Widget build(BuildContext context) {
+    String searchValue = '';
+    final List<String> _suggestions = [
+      'Afeganistan',
+      'Albania',
+      'Algeria',
+      'Australia',
+      'Brazil',
+      'German',
+      'Madagascar',
+      'Mozambique',
+      'Portugal',
+      'Zambia'
+    ];
     return Scaffold(
+        appBar: EasySearchBar(
+            backgroundColor: Colors.black,
+            foregroundColor: Colors.white,
+            title: const Text('Example'),
+            onSearch: (value) => setState(() => searchValue = value),
+            suggestions: _suggestions),
+        drawer: const ConsumerDrawer(),
         body: Padding(
-      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-      child: CustomScrollView(
-        slivers: render(context),
-      ),
-    ));
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+          child: CustomScrollView(
+            slivers: render(context),
+          ),
+        ));
   }
 
   List<Widget> render(BuildContext context) {
