@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:meko/reusable_widgets/carausel.dart';
 import 'package:meko/screens/grid.dart';
 
-class HomeWidget extends StatefulWidget {
+class ConsumerHomeWidget extends StatefulWidget {
   @override
-  HomeWidgetState createState() => HomeWidgetState();
+  ConsumerHomeWidgetState createState() => ConsumerHomeWidgetState();
 }
 
-class HomeWidgetState extends State<HomeWidget> {
+class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Padding(
+    return Scaffold(
+        body: Padding(
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       child: CustomScrollView(
         slivers: render(context),

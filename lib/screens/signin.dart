@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:meko/reusable_widgets/reusable_widget.dart';
 import 'package:meko/reusable_widgets/toast_message.dart';
-import 'package:meko/screens/address_book.dart';
+import 'package:meko/screens/address-screen/address_book.dart';
 import 'package:meko/screens/reset_password.dart';
 import 'package:meko/screens/signup.dart';
 import 'package:meko/utils/constants.dart';

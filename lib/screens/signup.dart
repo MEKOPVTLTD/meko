@@ -5,7 +5,7 @@ import 'package:meko/modal/gender.dart';
 import 'package:meko/reusable_widgets/gender_widget.dart';
 import 'package:meko/reusable_widgets/reusable_widget.dart';
 import 'package:meko/reusable_widgets/toast_message.dart';
-import 'package:meko/screens/address_book.dart';
+import 'package:meko/screens/address-screen/address_book.dart';
 import 'package:meko/utils/constants.dart';
 
 class SignUp extends StatefulWidget {

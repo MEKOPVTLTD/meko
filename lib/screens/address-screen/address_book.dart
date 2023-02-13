@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:meko/controller/user_controller.dart';
 import 'package:meko/modal/address_model.dart';
 import 'package:meko/reusable_widgets/custom_alert.dart';
-import 'package:meko/screens/address_header.dart';
-import 'package:meko/screens/address_tile.dart';
+import 'package:meko/screens/address-screen/address_header.dart';
+import 'package:meko/screens/address-screen/address_tile.dart';
 import 'package:meko/services/geolocator_widget.dart';
 import 'package:meko/utils/constants.dart';
 

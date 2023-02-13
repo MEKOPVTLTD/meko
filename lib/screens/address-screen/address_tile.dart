@@ -4,15 +4,15 @@ import 'package:meko/controller/user_controller.dart';
 import 'package:meko/modal/address_model.dart';
 import 'package:meko/modal/user_model.dart';
 import 'package:meko/reusable_widgets/custom_alert.dart';
+import 'package:meko/screens/consumer/consumer_home.dart';
 
 class AddressTile extends StatefulWidget {
-  const AddressTile({
-    super.key,
-    required this.userId,
-    required this.isLoadingAddress,
-    required this.isSavingAddress,
-    required this.updateIsSavingAddress
-  });
+  const AddressTile(
+      {super.key,
+      required this.userId,
+      required this.isLoadingAddress,
+      required this.isSavingAddress,
+      required this.updateIsSavingAddress});
 
   final String userId;
   final bool isLoadingAddress;
@@ -68,6 +68,11 @@ class _AddressTileState extends State<AddressTile> {
                           padding: const EdgeInsets.all(20),
                           child: ListTile(
                             title: Text(fullAddress),
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ConsumerHomeWidget())),
                             trailing: SizedBox(
                               width: 30,
                               child: Row(
@@ -94,7 +99,8 @@ class _AddressTileState extends State<AddressTile> {
                 return const Text("Please add address");
               }
             } else {
-              return const Text("something went wrong. Please contact Administrator");
+              return const Text(
+                  "something went wrong. Please contact Administrator");
             }
           } else {
             return const CircularProgressIndicator();
