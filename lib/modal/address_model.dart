@@ -4,12 +4,12 @@ part 'address_model.g.dart';
 
 @JsonSerializable()
 class AddressModel {
-  final String? name;
-  final String? street;
-  final String? locality;
-  final String? administrativeArea;
-  final String? country;
-  final String? postalCode;
+  final String name;
+  final String street;
+  final String locality;
+  final String administrativeArea;
+  final String country;
+  final String postalCode;
   final double latitude;
   final double longitude;
 

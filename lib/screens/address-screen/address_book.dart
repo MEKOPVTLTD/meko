@@ -92,12 +92,12 @@ class AddressBookWidgetState extends State<AddressBookWidget> {
       });
       Placemark placemark = places.elementAt(0);
       AddressModel addressModel = AddressModel(
-          placemark.name,
-          placemark.street,
-          placemark.locality,
-          placemark.administrativeArea,
-          placemark.country,
-          placemark.postalCode,
+          placemark.name!,
+          placemark.street!,
+          placemark.locality!,
+          placemark.administrativeArea!,
+          placemark.country!,
+          placemark.postalCode!,
           position.latitude,
           position.longitude);
 
