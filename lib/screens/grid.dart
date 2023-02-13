@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:meko/controller/category_controller.dart';
 import 'package:meko/controller/image_controller.dart';
 import 'package:meko/modal/category_model.dart';
-import 'package:meko/modal/product_model.dart';
-import 'package:meko/screens/products.dart';
+import 'package:meko/modal/sub_category_model.dart';
+import 'package:meko/screens/sub_category.dart';
 
 class GridWidget extends StatefulWidget {
   const GridWidget({Key? key}) : super(key: key);
@@ -58,7 +58,7 @@ class _GridWidgetState extends State<GridWidget> {
                                 child: loadImage(categoryModel, index),
                               ),
                               onTap: () => _onTileClicked(
-                                  categoryModel[index].products)));
+                                  categoryModel[index].subCategory)));
                     },
                     childCount: categoryModel.length,
                   ));
@@ -101,8 +101,8 @@ class _GridWidgetState extends State<GridWidget> {
         });
   }
 
-  void _onTileClicked(List<ProductModel>? products) {
-    List<ProductModel> formattedProducts;
+  void _onTileClicked(List<SubCategoryModel>? products) {
+    List<SubCategoryModel> formattedProducts;
     if (products == null) {
       formattedProducts = [];
     } else {
@@ -111,6 +111,6 @@ class _GridWidgetState extends State<GridWidget> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => Products(products: formattedProducts)));
+            builder: (context) => SubCategory(products: formattedProducts)));
   }
 }

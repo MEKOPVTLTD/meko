@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meko/controller/image_controller.dart';
-import 'package:meko/modal/product_model.dart';
+import 'package:meko/modal/sub_category_model.dart';
 
-class Products extends StatefulWidget {
-  final List<ProductModel> products;
+class SubCategory extends StatefulWidget {
+  final List<SubCategoryModel> products;
 
-  const Products({super.key, required this.products});
+  const SubCategory({super.key, required this.products});
 
   @override
-  ProductsState createState() => ProductsState();
+  SubCategoryState createState() => SubCategoryState();
 }
 
-class ProductsState extends State<Products> with TickerProviderStateMixin {
+class SubCategoryState extends State<SubCategory> with TickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -128,7 +128,7 @@ class ProductsState extends State<Products> with TickerProviderStateMixin {
     );
   }
 
-  Widget loadImage(List<ProductModel> categoryModel, int index) {
+  Widget loadImage(List<SubCategoryModel> categoryModel, int index) {
     ImageController imageController = Get.put(ImageController());
     return FutureBuilder(
         future: imageController.getImage(categoryModel[index].imageName),

@@ -152,6 +152,7 @@ class _SignUpState extends State<SignUp> {
           "email": _emailTextController.text,
           "phone": _phoneTextController.text,
           "gender": selected.name,
+          "addressBook": [],
           "type": "consumer"
         }).then((value) {
           var uid = user?.uid;

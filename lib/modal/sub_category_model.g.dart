@@ -1,19 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product_model.dart';
+part of 'sub_category_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
+SubCategoryModel _$SubCategoryModelFromJson(Map<String, dynamic> json) =>
+    SubCategoryModel(
       json['name'] as String,
       json['imageName'] as String,
       $enumDecode(_$GenderEnumMap, json['serviceFor']),
       json['index'] as int,
     );
 
-Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
+Map<String, dynamic> _$SubCategoryModelToJson(SubCategoryModel instance) =>
     <String, dynamic>{
       'name': instance.name,
       'imageName': instance.imageName,
