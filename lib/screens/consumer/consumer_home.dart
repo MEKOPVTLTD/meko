@@ -64,10 +64,25 @@ class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
             onSearch: (value) => setState(() => searchValue = value),
             suggestions: _suggestions),
         drawer: const ConsumerDrawer(),
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-          child: CustomScrollView(
-            slivers: render(context),
+        body: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                CarauselWidget(),
+                const SizedBox(
+                  height: 10,
+                ),
+                if (isCategoryLoaded && !isCategoryLoading) ...[
+                  renderCatalog(context)
+                ] else ...[
+                  const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                ]
+              ],
+            ),
           ),
         ));
   }
@@ -80,32 +95,10 @@ class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
                 SubCategory(products: categoryModel.subCategory!)));
   }
 
-  List<Widget> render(BuildContext context) {
-    List<Widget> items = [];
-    items.add(renderCarousel(context));
-    if (!isCategoryLoading && isCategoryLoaded) {
-      items.add(renderCatalog(context));
-    } else {
-      items.add(spinner(context));
-    }
-
-    return items;
-  }
-
-  Widget renderCarousel(BuildContext context) {
-    final lists = SliverList(
-      delegate: SliverChildListDelegate(
-        [
-          CarauselWidget(),
-        ],
-      ),
-    );
-    return lists;
-  }
-
   Widget renderCatalog(BuildContext context) {
     final grids = GridWidget<CategoryModel>(
       items: categories,
+      isScrollable: false,
       getName: (CategoryModel value) => value.name,
       getImageName: (CategoryModel value) => value.imageName,
       onSelect: (CategoryModel value) {
@@ -113,26 +106,5 @@ class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
       },
     );
     return grids;
-  }
-
-  Widget spinner(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildListDelegate(
-        [
-          const CircularProgressIndicator(),
-        ],
-      ),
-    );
-  }
-
-  Widget buildImage(String img, int index) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      color: Colors.grey,
-      child: Image.network(
-        img,
-        fit: BoxFit.cover,
-      ),
-    );
   }
 }

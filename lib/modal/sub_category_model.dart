@@ -6,12 +6,13 @@ part 'sub_category_model.g.dart';
 
 @JsonSerializable()
 class SubCategoryModel {
+  final String id;
   final String name;
   final String imageName;
   final Gender serviceFor;
   final int index;
 
-  SubCategoryModel(this.name, this.imageName, this.serviceFor, this.index);
+  SubCategoryModel(this.id, this.name, this.imageName, this.serviceFor, this.index);
 
   factory SubCategoryModel.fromJson(Map<String, dynamic> json) =>
       _$SubCategoryModelFromJson(json);

@@ -32,9 +32,6 @@ class _CarauselWidgetState extends State<CarauselWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 15,
-        ),
         CarouselSlider.builder(
           options: CarouselOptions(
               height: 300,
@@ -55,7 +52,7 @@ class _CarauselWidgetState extends State<CarauselWidget> {
             return buildImage(img, index);
           },
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         CarouselIndicator(
@@ -64,7 +61,7 @@ class _CarauselWidgetState extends State<CarauselWidget> {
           color: Colors.black12,
           activeColor: Colors.black,
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
       ],
