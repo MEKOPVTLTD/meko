@@ -6,6 +6,7 @@ import 'package:meko/screens/address-screen/address_book.dart';
 import 'package:meko/screens/reset_password.dart';
 import 'package:meko/screens/signup.dart';
 import 'package:meko/utils/constants.dart';
+import 'package:meko/utils/data_setup.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -18,6 +19,13 @@ class _SignInState extends State<SignIn> {
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
+
+  @override
+  void initState() {
+    super.initState();
+    // saveData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,4 +146,6 @@ class _SignInState extends State<SignIn> {
       ),
     );
   }
+
+
 }
