@@ -72,7 +72,7 @@ class _AddressTileState extends State<AddressTile> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        ConsumerHomeWidget())),
+                                        ConsumerHomeWidget(fullAddress: fullAddress))),
                             trailing: SizedBox(
                               width: 30,
                               child: Row(

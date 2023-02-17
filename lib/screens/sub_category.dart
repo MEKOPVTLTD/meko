@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:meko/controller/sub_category_controller.dart';
 import 'package:meko/modal/gender.dart';
 import 'package:meko/modal/sub_category_model.dart';
 import 'package:meko/screens/grid.dart';
+import 'package:meko/screens/product_list.dart';
 
 class SubCategory extends StatefulWidget {
-  final List<SubCategoryModel> products;
+  final String categoryId;
 
-  const SubCategory({super.key, required this.products});
+  const SubCategory({super.key, required this.categoryId});
 
   @override
   SubCategoryState createState() => SubCategoryState();
@@ -15,6 +18,7 @@ class SubCategory extends StatefulWidget {
 class SubCategoryState extends State<SubCategory>
     with TickerProviderStateMixin {
   late TabController _tabController;
+  final subCategoryController = Get.put(SubCategoryController());
 
   @override
   void initState() {
@@ -34,10 +38,31 @@ class SubCategoryState extends State<SubCategory>
         appBar: AppBar(
           backgroundColor: Colors.black,
           foregroundColor: Colors.white,
-          title: const Text('Example'),
+          title: const Text('Sub Categories'),
         ),
         body: Column(
-          children: [renderTab(context), renderTabView(context)],
+          children: [renderTab(context),
+
+            FutureBuilder(
+                future: subCategoryController.getSubCategories(widget.categoryId),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasData) {
+                      List<SubCategoryModel> subCategories = snapshot.data as List<SubCategoryModel>;
+                      return renderTabView(subCategories);
+                    }
+                    else {
+                      Center(
+                        child: Text("No Product Found"),
+                      );
+                    }
+                  }
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+            })
+            // renderTabView(context)
+          ],
         ));
   }
 
@@ -61,14 +86,14 @@ class SubCategoryState extends State<SubCategory>
     );
   }
 
-  Widget renderTabView(BuildContext context) {
+  Widget renderTabView(List<SubCategoryModel> subCategories) {
     return Expanded(
         child: TabBarView(
       controller: _tabController,
       children: [
         GridWidget<SubCategoryModel>(
           padding: 10.0,
-          items: widget.products
+          items: subCategories
               .where((element) => element.serviceFor == Gender.MALE)
               .toList(),
           isScrollable: true,
@@ -80,7 +105,7 @@ class SubCategoryState extends State<SubCategory>
         ),
         GridWidget<SubCategoryModel>(
           padding: 10.0,
-          items: widget.products
+          items: subCategories
               .where((element) => element.serviceFor == Gender.FEMALE)
               .toList(),
           isScrollable: true,
@@ -94,7 +119,11 @@ class SubCategoryState extends State<SubCategory>
     ));
   }
 
-  void _onTileClicked(BuildContext context, SubCategoryModel i) {
-    // print(i);
+  void _onTileClicked(BuildContext context, SubCategoryModel subCategoryModel) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                ProductList(productId: subCategoryModel.id)));
   }
 }

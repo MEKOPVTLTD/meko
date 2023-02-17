@@ -9,7 +9,7 @@ class CategoryRepository extends GetxService {
   Future<List<CategoryModel>> allCategory() async {
     final snapshot = await _db.collection("Category").get();
     final categories =
-        snapshot.docs.map((e) => CategoryModel.fromJson(e.data())).toList();
+        snapshot.docs.map((e) => CategoryModel.fromJson(e.data(), e.id)).toList();
     return categories;
   }
 }

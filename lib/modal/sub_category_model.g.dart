@@ -9,6 +9,7 @@ part of 'sub_category_model.dart';
 SubCategoryModel _$SubCategoryModelFromJson(Map<String, dynamic> json) =>
     SubCategoryModel(
       json['id'] as String,
+      json['categoryId'] as String,
       json['name'] as String,
       json['imageName'] as String,
       $enumDecode(_$GenderEnumMap, json['serviceFor']),
@@ -18,6 +19,7 @@ SubCategoryModel _$SubCategoryModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$SubCategoryModelToJson(SubCategoryModel instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'categoryId': instance.categoryId,
       'name': instance.name,
       'imageName': instance.imageName,
       'serviceFor': _$GenderEnumMap[instance.serviceFor]!,

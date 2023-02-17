@@ -10,16 +10,14 @@ CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
     CategoryModel(
       json['name'] as String,
       json['imageName'] as String,
-      (json['subCategory'] as List<dynamic>?)
-          ?.map((e) => SubCategoryModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      json['id'] as String,
       json['index'] as int,
     );
 
 Map<String, dynamic> _$CategoryModelToJson(CategoryModel instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'imageName': instance.imageName,
-      'subCategory': instance.subCategory,
       'index': instance.index,
     };

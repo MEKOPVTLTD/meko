@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meko/controller/category_controller.dart';
@@ -10,8 +9,12 @@ import 'package:meko/screens/grid.dart';
 import 'package:meko/screens/sub_category.dart';
 
 class ConsumerHomeWidget extends StatefulWidget {
+  ConsumerHomeWidget({super.key, required this.fullAddress});
+
   @override
   ConsumerHomeWidgetState createState() => ConsumerHomeWidgetState();
+
+  String fullAddress;
 }
 
 class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
@@ -74,7 +77,17 @@ class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
                     });
                   },
                 )
-              : Text("kjbkfb"),
+              : Container(
+                  color: Colors.black,
+                  child: Column(
+                    children: [
+                      Text(
+                        widget.fullAddress,
+                        style: TextStyle(color: Colors.white),
+                      )
+                    ],
+                  ),
+                ),
         ),
         actions: isSearching
             ? []
@@ -108,7 +121,9 @@ class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
                           var data = snapshots.data!.docs[index].data()
                               as Map<String, dynamic>;
 
-                          return ListTile(title: Text(data['name']));
+                          return ListTile(
+                              title: Text(
+                                  data['searchTerm'].toString().capitalize!));
                         });
               },
             ),
@@ -118,13 +133,16 @@ class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
 
   Stream<QuerySnapshot<Map<String, dynamic>>>
       getProductsBasedOnSearchedString() {
+    String searchValueLowerCase = searchValue.toLowerCase();
     return FirebaseFirestore.instance
-        .collection("SearchTerm")
-        .where("name",
-            isGreaterThanOrEqualTo: searchValue,
-            isLessThan: searchValue.substring(0, searchValue.length - 1) +
-                String.fromCharCode(
-                    searchValue.codeUnitAt(searchValue.length - 1) + 1))
+        .collection("Products")
+        .where("searchTerm",
+            isGreaterThanOrEqualTo: searchValueLowerCase,
+            isLessThan: searchValueLowerCase.substring(
+                    0, searchValueLowerCase.length - 1) +
+                String.fromCharCode(searchValueLowerCase
+                        .codeUnitAt(searchValueLowerCase.length - 1) +
+                    1))
         .snapshots();
   }
 
@@ -156,8 +174,7 @@ class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) =>
-                SubCategory(products: categoryModel.subCategory!)));
+            builder: (context) => SubCategory(categoryId: categoryModel.id)));
   }
 
   Widget renderCatalog(BuildContext context) {
