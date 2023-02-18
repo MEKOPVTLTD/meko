@@ -14,7 +14,7 @@ class ConsumerHomeWidget extends StatefulWidget {
   @override
   ConsumerHomeWidgetState createState() => ConsumerHomeWidgetState();
 
-  String fullAddress;
+  String fullAddress = '';
 }
 
 class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
@@ -66,7 +66,7 @@ class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
                                   searchValue = '';
                                 })
                               },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.arrow_back,
                             color: Colors.black,
                           )),
@@ -79,13 +79,20 @@ class ConsumerHomeWidgetState extends State<ConsumerHomeWidget> {
                 )
               : Container(
                   color: Colors.black,
-                  child: Column(
-                    children: [
-                      Text(
-                        widget.fullAddress,
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
+                  child: ListTile(
+                    textColor: Colors.white,
+                    iconColor: Colors.white,
+                    dense: true,
+                    contentPadding:
+                        const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
+                    horizontalTitleGap: 0,
+                    title: Text(
+                      widget.fullAddress,
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                    trailing: const Icon(
+                      Icons.place_outlined,
+                    ),
                   ),
                 ),
         ),
