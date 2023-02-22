@@ -67,6 +67,44 @@ TextFormField reusableTextField(
   );
 }
 
+
+TextFormField reusableNumberTextField(
+    String text,
+    IconData icon,
+    bool isPasswordType,
+    RegExp validateRegex,
+    String errorMessage,
+    TextEditingController controller) {
+  return TextFormField(
+    keyboardType: TextInputType.phone,
+    controller: controller,
+    obscureText: isPasswordType,
+    enableSuggestions: !isPasswordType,
+    autocorrect: !isPasswordType,
+    cursorColor: Colors.black,
+    style: TextStyle(color: Colors.black.withOpacity(0.9)),
+    decoration: InputDecoration(
+      prefixIcon: Icon(
+        icon,
+        color: Colors.black,
+      ),
+      labelText: text,
+      labelStyle: TextStyle(color: Colors.black.withOpacity(0.9)),
+      filled: true,
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      fillColor: Colors.white,
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30.0),
+          borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
+    ),
+    validator: (value) {
+      if (value!.isEmpty || !validateRegex.hasMatch(value)) {
+        return errorMessage;
+      }
+    },
+  );
+}
+
 Container firebaseUIButton(BuildContext context, String title, Function onTap) {
   return Container(
     width: MediaQuery.of(context).size.width,

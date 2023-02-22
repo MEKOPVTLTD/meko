@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:85332297142:android:55efd867693fc607b42d17",
+        "mobilesdk_app_id": "1:85332297142:android:ab86eae95e43386fb42d17",
         "android_client_info": {
           "package_name": "com.meko.meko"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "85332297142-m6ceusdmgdki745rqoqfh4fv8d6839vs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.meko.meko",
+            "certificate_hash": "259721542b1f8b4f9354b3bad3c8eab9b36b66e5"
+          }
+        },
         {
           "client_id": "85332297142-e7ckq8kdqht39mjsrbc7e44009m3sk0h.apps.googleusercontent.com",
           "client_type": 3
@@ -29,6 +37,13 @@
             {
               "client_id": "85332297142-e7ckq8kdqht39mjsrbc7e44009m3sk0h.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "85332297142-ijb4v22ua4qd50l0p9ultjgr65fvggus.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.meko.meko"
+              }
             }
           ]
         }

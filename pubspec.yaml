@@ -44,6 +44,7 @@ dependencies:
   json_serializable: ^6.6.0
   build_runner: ^2.0.5
   flutter_launcher_icons: ^0.11.0
+  flutter_otp_text_field: ^1.1.1
 
 flutter_icons:
   image_path: "assets/launcher.png"
