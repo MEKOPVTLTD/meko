@@ -23,3 +23,10 @@ To generate model
     - flutter pub run build_runner build
 
 
+
+To generate apk
+    - flutter clean 
+    - flutter build apk
+    - Apk will be generated in build/app/outputs/flutter-apk/
+
+

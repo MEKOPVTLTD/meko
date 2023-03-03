@@ -1,4 +1,3 @@
-import 'package:meko/modal/sub_category_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'category_model.g.dart';

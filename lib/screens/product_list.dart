@@ -27,16 +27,16 @@ class _ProductListState extends State<ProductList> {
             future: productController.getProducts(widget.productId),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasData) {
+                if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                   var groupProdcuts = toGroupProdcuts(snapshot.data!);
                   return renderProducts(groupProdcuts);
                 } else {
-                  Center(
+                  return const Center(
                     child: Text("No Product Found"),
                   );
                 }
               }
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }));
@@ -56,7 +56,6 @@ class _ProductListState extends State<ProductList> {
               collapsedIconColor: Colors.white,
               textColor: Colors.white,
               iconColor: Colors.white,
-              initiallyExpanded: true,
               title: Text(
 
                 groupedProducts.keys.elementAt(i),
@@ -93,7 +92,7 @@ class _ProductListState extends State<ProductList> {
           spacing: 0,
           children: [
             Icon(Icons.currency_rupee_outlined, color: Colors.black, ),
-            Text(element.price, style: TextStyle(fontSize: 18.0),),
+            Text(element.price.toString(), style: TextStyle(fontSize: 18.0),),
             SizedBox(width: 20),
             Icon(Icons.add_shopping_cart, color: Colors.black,),
           ],

@@ -28,20 +28,22 @@ class _GridWidgetState<T> extends State<GridWidget<T>> {
   Widget build(BuildContext context) {
     var items = widget.items;
 
-    return GridView.count(
-      padding: EdgeInsets.all(widget.padding),
-      primary: false,
-      physics: widget.isScrollable
-          ? const AlwaysScrollableScrollPhysics()
-          : const NeverScrollableScrollPhysics(),
-      crossAxisSpacing: 8,
-      mainAxisSpacing: 8,
-      crossAxisCount: 3,
-      childAspectRatio: 3 / 4,
-      shrinkWrap: true,
-      children: List<Widget>.generate(
-          items.length, (index) => _buildItem(index, items[index])),
-    );
+    return items.isEmpty
+        ? const Center(child: Text("No Content"))
+        : GridView.count(
+            padding: EdgeInsets.all(widget.padding),
+            primary: false,
+            physics: widget.isScrollable
+                ? const AlwaysScrollableScrollPhysics()
+                : const NeverScrollableScrollPhysics(),
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            crossAxisCount: 3,
+            childAspectRatio: 3 / 4,
+            shrinkWrap: true,
+            children: List<Widget>.generate(
+                items.length, (index) => _buildItem(index, items[index])),
+          );
   }
 
   Widget _buildItem(int index, T item) {
@@ -65,27 +67,9 @@ class _GridWidgetState<T> extends State<GridWidget<T>> {
                   ]
                   // color: hexStringToColor("EEEEEE")
                   ),
-              child: loadImage(item),
+              child: Image.network(widget.getImageName(item).toString(),
+                  fit: BoxFit.contain),
             ),
             onTap: () => widget.onSelect(item)));
-  }
-
-  Widget loadImage(T categoryModel) {
-    ImageController imageController = Get.put(ImageController());
-    return FutureBuilder(
-        future: imageController
-            .getImage(widget.getImageName(categoryModel).toString()),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return Image.network(
-                color: Colors.black, snapshot.data!.toString());
-          }
-          return Container(
-            color: Colors.white,
-            child: const Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        });
   }
 }

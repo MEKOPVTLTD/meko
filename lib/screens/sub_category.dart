@@ -76,10 +76,10 @@ class SubCategoryState extends State<SubCategory>
         controller: _tabController,
         tabs: const <Widget>[
           Tab(
-            icon: Icon(Icons.man_outlined),
+            icon: Icon(Icons.woman_outlined),
           ),
           Tab(
-            icon: Icon(Icons.woman_outlined),
+            icon: Icon(Icons.man_outlined),
           )
         ],
       ),
@@ -94,7 +94,7 @@ class SubCategoryState extends State<SubCategory>
         GridWidget<SubCategoryModel>(
           padding: 10.0,
           items: subCategories
-              .where((element) => element.serviceFor == Gender.MALE)
+              .where((element) => element.serviceFor == Gender.FEMALE)
               .toList(),
           isScrollable: true,
           getName: (SubCategoryModel value) => value.name,
@@ -106,7 +106,7 @@ class SubCategoryState extends State<SubCategory>
         GridWidget<SubCategoryModel>(
           padding: 10.0,
           items: subCategories
-              .where((element) => element.serviceFor == Gender.FEMALE)
+              .where((element) => element.serviceFor == Gender.MALE)
               .toList(),
           isScrollable: true,
           getName: (SubCategoryModel value) => value.name,

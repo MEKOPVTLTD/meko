@@ -7,9 +7,8 @@ part 'product_model.g.dart';
 class ProductModel {
   final String id;
   final String name;
-  final String price;
+  final int price;
   final String searchTerm;
-  final Gender serviceFor;
   final String type;
   final String categoryId;
   final String subCategoryId;
@@ -19,7 +18,6 @@ class ProductModel {
       this.name,
       this.price,
       this.searchTerm,
-      this.serviceFor,
       this.type,
       this.categoryId,
       this.subCategoryId,

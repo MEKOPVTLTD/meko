@@ -118,7 +118,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
         "addressBook": [],
         "type": "consumer"
       }).then((value) {
-        var uid = user?.uid;
+        var uid = _auth.currentUser?.uid;
         if (uid != null) {
           Navigator.push(
               context,

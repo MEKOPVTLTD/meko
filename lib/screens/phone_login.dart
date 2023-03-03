@@ -189,7 +189,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
               ToastMessage.showSnackMessage(
                   context, "Provided number is not valid");
             } else {
-              ToastMessage.showSnackMessage(context, "Something went wrong");
+              ToastMessage.showSnackMessage(context, e.toString());
             }
           });
     }

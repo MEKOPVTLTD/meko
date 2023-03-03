@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:meko/screens/phone_login.dart';
 
 import '../signup-andsignin-email/signin.dart';
 
@@ -38,7 +39,7 @@ class _ConsumerDrawerState extends State<ConsumerDrawer> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const SignIn()));
+                        builder: (context) => const PhoneLogin()));
               });
 
 
