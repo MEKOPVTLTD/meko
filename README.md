@@ -24,6 +24,7 @@ To generate model
 
 
 
+
 To generate apk
     - flutter clean 
     - flutter build apk
